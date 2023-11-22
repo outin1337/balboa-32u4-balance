@@ -26,6 +26,6 @@ This provides detailed instructions on how to set up and operate a Balboa 32u4 r
 6. **Balancing in Action**: Position the robot upright. It will balance itself, signified by the activation of green LED.
 7. **Safety Feature**: If the robot tilts below 45 degrees, the motor will automatically turn off, though the program continues to run.
 8. **Pausing the Program**: Press the "A" button again to pause the program. A red LED will light up to indicate this state.
-9. **Adjusting PID & Setpoint**: If the robot does not balance with the same PID values as us, then you need to change Kp, Ki, Kd also change Setpoint where your center point and consider the weight of both sides. Here is a video which can you help with tuning. [PID values for balancing](https://www.youtube.com/watch?v=cjSw7sc2JKk)
+9. **Adjusting PID & Setpoint**: If the robot does not balance with the same PID values as us, then you need to change Kp, Ki, Kd also change Setpoint where your center point and consider the weight of both sides. Here is a [video](https://www.youtube.com/watch?v=cjSw7sc2JKk) which can you help with tuning. 
 
 This is aimed at providing a professional and clear set of instructions for setting up and operating the Balboa 32u4 robot with a PID controller for balancing tasks.
