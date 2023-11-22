@@ -29,7 +29,7 @@ const double setpoint = 11.0;
 bool MotorOn = false;
 
 const double R2D =  180 / 3.14159265;
-PID_d pid(30.0, 600, 0.7, 10, &pid_output);
+PID_d pid(39.0, 200, 0.8, 11, &pid_output);
 
 void setup() {
   Serial.begin(9600);
@@ -38,6 +38,7 @@ void setup() {
   imu.enableDefault();
   imu.writeReg(LSM6::CTRL2_G, 0b01011000); // 208 Hz, 1000 deg/s
   pid.SetLimit(-300, 300);
+  pid.ReverseDirection();
   
   Serial.println("Stabilzing... Please do not touch!");
   delay(1000);
