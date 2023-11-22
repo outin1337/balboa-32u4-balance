@@ -6,7 +6,8 @@ This provides detailed instructions on how to set up and operate a Balboa 32u4 r
 
 ## Documentation
 - **Balboa 32u4 User Guide**: A comprehensive manual is available at [Pololu's website](https://www.pololu.com/docs/0J70) and the detailed PDF version can be downloaded [here](https://www.pololu.com/docs/pdf/0J70/balboa_32u4_robot.pdf).
-- **Arduino Library**: The required Arduino library for Balboa 32u4 is accessible at [Pololu's GitHub repository](https://pololu.github.io/balboa-32u4-arduino-library/).
+- **Arduino Balboa-32u4 Library**: The required Arduino library for Balboa 32u4 is accessible at [Pololu's GitHub repository](https://pololu.github.io/balboa-32u4-arduino-library/).
+- **Arduino LSM6 Library**: For the LSM6 sensor, use the library available at [Pololu's GitHub repository](https://github.com/pololu/lsm6-arduino).
 - **PID Controller**: The PID control for this application is inspired by, and adapted from, the [Arduino PID Library by Brett Beauregard](https://github.com/br3ttb/Arduino-PID-Library). Note that our implementation is simplified and customized specifically for this balancing task.
 
 ## Setup Instructions
