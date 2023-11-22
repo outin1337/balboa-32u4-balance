@@ -1,8 +1,5 @@
 #pragma once
 
-#define FORWARD true
-#define BACKWARDS false
-
 class PID_d {
 public:
     PID_d(double Kp, double Ki, double Kd, double sampleTime, double *pid_output);
