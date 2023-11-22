@@ -29,7 +29,7 @@ const double setpoint = 11.0;
 bool MotorOn = false;
 
 const double R2D =  180 / 3.14159265;
-PID_d pid(39.0, 200, 0.8, 11, &pid_output);
+PID_d pid(30.0, 150, 0.5, 11, &pid_output);
 
 void setup() {
   Serial.begin(9600);
@@ -82,14 +82,18 @@ void loop() {
     }
 
     if (MotorOn && abs(angle) <= 45){
-      ledRed(1);
-      ledYellow(1);
+      ledGreen(1);
+      ledYellow(0);
       balance();
+    }
+    else if(MotorOn && abs(angle) > 45){
+      ledGreen(0);
+      ledYellow(1);
+      stop_balance();
     }
     else {
       stop_balance();
     }
-
 
     lastTime = millis();
   }

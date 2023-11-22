@@ -23,8 +23,9 @@ This provides detailed instructions on how to set up and operate a Balboa 32u4 r
 3. **Initial Setup**: Place the robot on a flat surface with the Raspberry Pi visible from above. Turn on the robot using the Power button, indicated by a blue light and a startup sound.
 4. **Calibration**: Press the Reset button for calibration. A specific sound from the buzzer will signal readiness. Repeat this step if you change the balancing surface.
 5. **Start Balancing**: Press the "A" button to initiate the balancing program. A yellow LED will illuminate to indicate that the program is active.
-6. **Balancing in Action**: Position the robot upright. It will balance itself, signified by the activation of both yellow and red LEDs.
+6. **Balancing in Action**: Position the robot upright. It will balance itself, signified by the activation of green LED.
 7. **Safety Feature**: If the robot tilts below 45 degrees, the motor will automatically turn off, though the program continues to run.
 8. **Pausing the Program**: Press the "A" button again to pause the program. A red LED will light up to indicate this state.
+9. **Adjusting PID & Setpoint**: If the robot does not balance with the same PID values as us, then you need to change Kp, Ki, Kd also change Setpoint where your center point and consider the weight of both sides. Here is a video which can you help with tuning. [PID values for balancing](https://www.youtube.com/watch?v=cjSw7sc2JKk)
 
 This is aimed at providing a professional and clear set of instructions for setting up and operating the Balboa 32u4 robot with a PID controller for balancing tasks.
