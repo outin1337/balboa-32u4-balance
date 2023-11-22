@@ -1,8 +1,8 @@
 
-# Balboa 32u4 Robot: PID Controller Balancing Guide
+# Balboa 32u4 Robot: PID Controller Balancing
 
 ## Overview
-This guide provides detailed instructions on how to set up and operate a Balboa 32u4 robot using a PID controller to achieve stable balancing for more than 10 seconds. The Balboa 32u4 robot is a versatile, high-performance platform suitable for advanced robotics projects.
+This provides detailed instructions on how to set up and operate a Balboa 32u4 robot using a PID controller to achieve stable balancing for more than 10 seconds. The Balboa 32u4 robot is a versatile, high-performance platform suitable for advanced robotics projects.
 
 ## Documentation
 - **Balboa 32u4 User Guide**: A comprehensive manual is available at [Pololu's website](https://www.pololu.com/docs/0J70) and the detailed PDF version can be downloaded [here](https://www.pololu.com/docs/pdf/0J70/balboa_32u4_robot.pdf).
@@ -26,4 +26,4 @@ This guide provides detailed instructions on how to set up and operate a Balboa 
 7. **Safety Feature**: If the robot tilts below 45 degrees, the motor will automatically turn off, though the program continues to run.
 8. **Pausing the Program**: Press the "A" button again to pause the program. A red LED will light up to indicate this state.
 
-This guide is aimed at providing a professional and clear set of instructions for setting up and operating the Balboa 32u4 robot with a PID controller for balancing tasks.
+This is aimed at providing a professional and clear set of instructions for setting up and operating the Balboa 32u4 robot with a PID controller for balancing tasks.
