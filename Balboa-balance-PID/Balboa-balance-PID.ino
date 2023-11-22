@@ -4,12 +4,12 @@
 
 #include "PID_lib.h"
 
-#define SETPOINT = 11.0
-#define KP = 30.0
-#define KI = 150.0
-#define KD = 0.5
-#define SAMPLE_TIME_MS = 10
-#define R2D =  180 / 3.14159265
+#define SETPOINT 11.0
+#define KP 30.0
+#define KI 150.0
+#define KD 0.5
+#define SAMPLE_TIME_MS 10
+#define R2D 180 / 3.14159265
 
 LSM6 imu;
 Balboa32U4Motors motors;
@@ -65,7 +65,7 @@ void setup() {
 
 void loop() {
 
-  if ((millis() - lastTime) >= sampleTime){
+  if ((millis() - lastTime) >= SAMPLE_TIME_MS){
     read_sensor_calc();
     complementary_filter();
 
