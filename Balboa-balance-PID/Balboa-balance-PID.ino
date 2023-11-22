@@ -4,6 +4,13 @@
 
 #include "PID_lib.h"
 
+#define SETPOINT = 11.0
+#define KP = 30.0
+#define KI = 150.0
+#define KD = 0.5
+#define SAMPLE_TIME_MS = 10
+#define R2D =  180 / 3.14159265
+
 LSM6 imu;
 Balboa32U4Motors motors;
 Balboa32U4Encoders encoders;
@@ -25,11 +32,9 @@ double lastTime;
 double deltaTime;
 double dt_d;
 double pid_output;
-const double setpoint = 11.0;
 bool MotorOn = false;
 
-const double R2D =  180 / 3.14159265;
-PID_d pid(30.0, 150, 0.5, 11, &pid_output);
+PID_d pid(KP, KI, KD, SAMPLE_TIME_MS, &pid_output);
 
 void setup() {
   Serial.begin(9600);
@@ -60,14 +65,14 @@ void setup() {
 
 void loop() {
 
-  if ((millis() - lastTime) >= 10 ){
+  if ((millis() - lastTime) >= sampleTime){
     read_sensor_calc();
     complementary_filter();
 
-    pid.step(11.0, angle);
+    pid.step(SETPOINT, angle);
     Serial.println(pid_output);
 
-    if (buttonA.getSingleDebouncedPress() ){
+    if (buttonA.getSingleDebouncedPress()){
       MotorOn = !MotorOn;
       if (MotorOn){
         buzzer.playFromProgramSpace(startMotor);
