@@ -13,14 +13,12 @@
 
 LSM6 imu;
 Balboa32U4Motors motors;
-Balboa32U4Encoders encoders;
 Balboa32U4ButtonA buttonA;
 Balboa32U4Buzzer buzzer;
 
 const char ready[] PROGMEM = "!O4 L8 C D E";
 const char startMotor[] PROGMEM = "!O5 L16 C"; 
 const char stopMotor[] PROGMEM = "!O3 L4 G";
-
 
 double angleAcc;
 double angle = 0.0;
