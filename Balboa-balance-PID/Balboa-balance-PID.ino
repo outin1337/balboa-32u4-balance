@@ -10,6 +10,7 @@
 #define KD 0.5
 #define SAMPLE_TIME_MS 10
 #define R2D 180 / 3.14159265
+#define FILTER_COEFF 0.98
 
 LSM6 imu;
 Balboa32U4Motors motors;
@@ -26,6 +27,8 @@ double angle = 0.0;
 double gYZero;
 double gyro;
 double gyroDps;
+double unfGyro;
+double currentTime;
 double lastTime; 
 double deltaTime;
 double dt_d;
@@ -40,6 +43,7 @@ void setup() {
   imu.init();
   imu.enableDefault();
   imu.writeReg(LSM6::CTRL2_G, 0b01011000); // 208 Hz, 1000 deg/s
+  imu.writeReg(LSM6::CTRL1_XL, 0b01010000); // 208 Hz, +/-2G
   pid.SetLimit(-300, 300);
   pid.ReverseDirection();
   
@@ -64,11 +68,23 @@ void setup() {
 void loop() {
 
   if ((millis() - lastTime) >= SAMPLE_TIME_MS){
+    
+    currentTime = millis();
+    deltaTime = currentTime - lastTime;
+    dt_d = deltaTime / 1000.0;
+    lastTime = currentTime;
+
     read_sensor_calc();
+
     complementary_filter();
 
+    /*Serial.print(angleAcc);
+    Serial.print(",");
+    Serial.print(unfGyro);
+    Serial.print(",");
+    Serial.println(angle); Uncomment to plot in serial plotter.*/  
+
     pid.step(SETPOINT, angle);
-    Serial.println(pid_output);
 
     if (buttonA.getSingleDebouncedPress()){
       MotorOn = !MotorOn;
@@ -97,8 +113,6 @@ void loop() {
     else {
       stop_balance();
     }
-
-    lastTime = millis();
   }
 }
 
@@ -117,12 +131,11 @@ void read_sensor_calc()
   imu.read();
   angleAcc = (atan2(imu.a.z, imu.a.x) * R2D);
   gyro = imu.g.y;
-  deltaTime = millis() - lastTime;
   gyroDps = ((gyro - gYZero) * 35)/ 1000.0;
-  dt_d = deltaTime / 1000.0;
+  unfGyro += gyroDps * dt_d;
 }
 
 void complementary_filter()
 {
-  angle = 0.98 *(angle+gyroDps*dt_d) + 0.02 * angleAcc;
+  angle = FILTER_COEFF *(angle+gyroDps*dt_d) + (1-FILTER_COEFF) * angleAcc;
 }
